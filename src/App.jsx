@@ -12,6 +12,7 @@ import clankbeatVideo from './assets/CLANKBEAT.mp4'
 import clankerVideo from './assets/CLANKER.mp4'
 import keepitgoingVideo from './assets/KEEPITGOING.mp4'
 import jumptVideo from './assets/jumpt.mp4'
+import dirtyClankVideo from './assets/DIRTYCLANK.mp4'
 
 function App() {
   const contractAddress = 'HW5SN5NH9jsUbYsGfTHfzfkhtAdtTiztF4qzsNQ8bonk'
@@ -24,6 +25,7 @@ function App() {
   const audioRef = useRef(null)
   const [isMuted, setIsMuted] = useState(false)
   const [volume, setVolume] = useState(0.5)
+  const [isAmbientPaused, setIsAmbientPaused] = useState(false)
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -55,11 +57,20 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Try to play audio when component is ready, browser might block this
-    if(init && audioRef.current) {
+    if (audioRef.current) {
+      if (isAmbientPaused) {
+        audioRef.current.pause()
+      } else {
+        audioRef.current.play().catch(error => console.log("Autoplay was prevented: ", error))
+      }
+    }
+  }, [isAmbientPaused])
+
+  useEffect(() => {
+    if(init && audioRef.current && !isAmbientPaused) {
       audioRef.current.play().catch(error => console.log("Autoplay was prevented: ", error))
     }
-  }, [init])
+  }, [init, isAmbientPaused])
 
   const particlesLoaded = (container) => {
     console.log("Particles loaded", container)
@@ -137,6 +148,14 @@ function App() {
       setCopyFeedback('Failed to copy')
       setTimeout(() => setCopyFeedback(''), 2000)
     })
+  }
+
+  const handleVideoPlay = () => {
+    setIsAmbientPaused(true)
+  }
+
+  const handleVideoPauseOrEnd = () => {
+    setIsAmbientPaused(false)
   }
 
   if (init) {
@@ -226,6 +245,13 @@ function App() {
         </div>
 
         <div className="video-gallery">
+          <video 
+            src={dirtyClankVideo} 
+            controls 
+            onPlay={handleVideoPlay} 
+            onPause={handleVideoPauseOrEnd} 
+            onEnded={handleVideoPauseOrEnd}
+          />
           <video src={clankbeatVideo} autoPlay loop muted playsInline />
           <video src={clankerVideo} autoPlay loop muted playsInline />
           <video src={keepitgoingVideo} autoPlay loop muted playsInline />
