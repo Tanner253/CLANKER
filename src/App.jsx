@@ -4,7 +4,7 @@ import bannerImg from './assets/BANNER.jpg'
 import portraitImg from './assets/profile pic.png'
 import iconImg from './assets/ICon.jpg'
 import alphaImg from './assets/ALPHA.png'
-import { FaTwitter, FaCopy, FaVolumeUp, FaVolumeMute, FaTiktok } from 'react-icons/fa'
+import { FaTwitter, FaCopy, FaVolumeUp, FaVolumeMute, FaTiktok, FaTelegram } from 'react-icons/fa'
 import Particles, { initParticlesEngine } from "@tsparticles/react"
 import { loadSlim } from "@tsparticles/slim"
 import spaceAmbience from './assets/ambient-soundscapes-007-space-atmosphere-304974.mp3'
@@ -15,9 +15,11 @@ import jumptVideo from './assets/jumpt.mp4'
 import dirtyClankVideo from './assets/DIRTYCLANK.mp4'
 
 function App() {
-  const contractAddress = 'HW5SN5NH9jsUbYsGfTHfzfkhtAdtTiztF4qzsNQ8bonk'
+  const contractAddress = 'DeBnWpmtZyQJ6anXD6ie3CDW2BsTKWWzaWEndKmuxray'
   const xCommunityLink = 'https://x.com/i/communities/1942266643608228197'
   const tiktokLink = 'https://www.tiktok.com/search?q=CLANKER&t=1751915588970'
+  const telegramLink = 'https://t.me/CLANKERCTO'
+  const raydiumLink = 'https://raydium.io/launchpad/token/?mint=DeBnWpmtZyQJ6anXD6ie3CDW2BsTKWWzaWEndKmuxray&fromCreate=true'
   const [copyFeedback, setCopyFeedback] = useState('')
   const [isAlphaModalOpen, setIsAlphaModalOpen] = useState(false)
   const [isChartModalOpen, setIsChartModalOpen] = useState(false)
@@ -169,6 +171,7 @@ function App() {
         <div className="header-buttons-container">
           <button onClick={() => setIsAlphaModalOpen(true)} className="alpha-button">ALPHA</button>
           <button onClick={() => setIsChartModalOpen(true)} className="chart-button">CHART</button>
+          <a href={raydiumLink} target="_blank" rel="noopener noreferrer" className="raydium-button">RAYDIUM</a>
         </div>
 
         {isAlphaModalOpen && (
@@ -184,7 +187,7 @@ function App() {
           <div className="modal-overlay" onClick={() => setIsChartModalOpen(false)}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <button onClick={() => setIsChartModalOpen(false)} className="close-button">&times;</button>
-              <iframe src="https://dexscreener.com/solana/6stLzsgBU5K3K9W6QN91DGtpTZxtNNCvQYdaWsuWpjaZ?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=marketCap&interval=60"></iframe>
+              <iframe src="https://dexscreener.com/solana/DeBnWpmtZyQJ6anXD6ie3CDW2BsTKWWzaWEndKmuxray?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=marketCap&interval=60"></iframe>
             </div>
           </div>
         )}
@@ -231,6 +234,9 @@ function App() {
             </a>
             <a href={tiktokLink} target="_blank" rel="noopener noreferrer">
               <FaTiktok />
+            </a>
+            <a href={telegramLink} target="_blank" rel="noopener noreferrer">
+              <FaTelegram />
             </a>
           </div>
 
