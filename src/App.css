@@ -108,16 +108,22 @@ button, a { font-family: inherit; }
 .banner-stage {
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  height: min(48vh, 460px);
   position: relative;
   overflow: hidden;
   margin-top: 16px;
+  background: #05060a;
 }
-.banner-stage img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+.banner-stage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: top center;
+}
 .banner-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--bg) 0%, rgba(5,6,10,0.12) 38%, transparent 68%);
+  background: linear-gradient(to top, var(--bg) 0%, rgba(5,6,10,0.2) 22%, transparent 48%);
 }
 
 .hero {
@@ -325,7 +331,6 @@ h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); }
   .hero { grid-template-columns: 1fr; }
   .still-grid { grid-template-columns: 1fr; }
   .lore-stats { grid-template-columns: 1fr 1fr; }
-  .banner-stage { height: 32vh; }
 }
 
 @media (max-width: 768px) {

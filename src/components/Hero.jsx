@@ -21,7 +21,7 @@ export default function Hero() {
           </h1>
           <p className="lede">
             People call robots and AI clankers when they mess up — ChatGPT,
-            delivery bots, the phone tree that will not let you talk to a person.
+            delivery bots, the phone tree that will not let you talk to a person.{' '}
             {TICKER} is that word. It is already everywhere, and it is not going away.
           </p>
           <div className="hero-actions">
