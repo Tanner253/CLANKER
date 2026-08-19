@@ -127,11 +127,17 @@ button, a { font-family: inherit; }
 }
 
 .hero {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 28px;
   align-items: end;
-  padding: 28px 0 12px;
+  padding: 0 0 12px;
+  margin-top: clamp(-240px, -22vw, -110px);
+}
+.hero-copy {
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9), 0 0 24px rgba(0, 0, 0, 0.7);
 }
 
 .eyebrow {
@@ -328,7 +334,10 @@ h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); }
 }
 
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; }
+  .hero {
+    grid-template-columns: 1fr;
+    margin-top: clamp(-160px, -28vw, -80px);
+  }
   .still-grid { grid-template-columns: 1fr; }
   .lore-stats { grid-template-columns: 1fr 1fr; }
 }
@@ -346,7 +355,7 @@ h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); }
   .ca-bar { position: static; top: auto; }
   .ca-full { display: none; }
   .ca-short { display: block; }
-  .hero { padding-top: 18px; }
+  .hero { padding-top: 0; }
   .chart-frame { height: 70vh; }
   .lore-stats { grid-template-columns: 1fr; }
   .tiktok-frame { flex-basis: min(325px, 86vw); width: min(325px, 86vw); height: 620px; }
