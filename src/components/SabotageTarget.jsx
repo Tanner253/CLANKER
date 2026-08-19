@@ -22,6 +22,7 @@ export function SabotageTarget({
   const chaseMs = useRef(0)
   const tired = useRef(false)
   const lastTaunt = useRef(0)
+  const inFieldAlready = useRef(false)
   const extra = Tag === 'button' ? { type: 'button' } : {}
 
   useEffect(() => {
@@ -52,12 +53,15 @@ export function SabotageTarget({
         offset.current.x += (vx / dist) * push
         offset.current.y += (vy / dist) * push
         chaseMs.current += 16
+        if (!inFieldAlready.current) {
+          inFieldAlready.current = true
+          speak()
+        }
         if (chaseMs.current > TIRED_MS) {
           tired.current = true
-          speak('fine. click it, organic')
-        } else if (performance.now() - lastTaunt.current > 1800) {
+          speak('fine. click it, organic', { force: true })
+        } else if (performance.now() - lastTaunt.current > 4200) {
           lastTaunt.current = performance.now()
-          speak()
           lungeAt({
             x: btnX - 40,
             y: btnY - 50,
@@ -65,6 +69,7 @@ export function SabotageTarget({
           })
         }
       } else {
+        if (!inField) inFieldAlready.current = false
         const pull = tired.current ? 0.08 : SPRING
         offset.current.x += -offset.current.x * pull
         offset.current.y += -offset.current.y * pull

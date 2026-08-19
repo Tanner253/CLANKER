@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { pointer, trackPointer } from '../pointer.js'
 import {
   ClankerContext,
+  IDLE_TAUNTS,
   isQuiet,
   TAUNTS,
   useClanker,
@@ -9,18 +10,26 @@ import {
 import RobotSprite from './RobotSprite.jsx'
 
 const FOLLOW = { x: -78, y: 58 }
+const SPEAK_COOLDOWN_MS = 5600
+const BUBBLE_MS = 4200
+const IDLE_EVERY_MS = 7500
 
 export function ClankerProvider({ children }) {
   const [taunt, setTaunt] = useState('')
   const [tauntKey, setTauntKey] = useState(0)
   const [lunge, setLunge] = useState(null)
   const hideTimer = useRef(0)
+  const lastSpeak = useRef(0)
 
-  const speak = useCallback((text) => {
-    setTaunt(text ?? TAUNTS[Math.floor(Math.random() * TAUNTS.length)])
+  const speak = useCallback((text, options = {}) => {
+    const now = performance.now()
+    if (!options.force && now - lastSpeak.current < SPEAK_COOLDOWN_MS) return
+    lastSpeak.current = now
+    const line = text ?? TAUNTS[Math.floor(Math.random() * TAUNTS.length)]
+    setTaunt(line)
     setTauntKey((key) => key + 1)
     window.clearTimeout(hideTimer.current)
-    hideTimer.current = window.setTimeout(() => setTaunt(''), 2200)
+    hideTimer.current = window.setTimeout(() => setTaunt(''), BUBBLE_MS)
   }, [])
 
   const lungeAt = useCallback((point) => {
@@ -37,6 +46,20 @@ export function ClankerProvider({ children }) {
     window.addEventListener('click', onClick)
     return () => window.removeEventListener('click', onClick)
   }, [lungeAt, speak])
+
+  useEffect(() => {
+    trackPointer()
+    let lastX = pointer.x
+    let lastY = pointer.y
+    const id = window.setInterval(() => {
+      const moved = Math.hypot(pointer.x - lastX, pointer.y - lastY)
+      lastX = pointer.x
+      lastY = pointer.y
+      if (moved < 50) return
+      speak(IDLE_TAUNTS[Math.floor(Math.random() * IDLE_TAUNTS.length)])
+    }, IDLE_EVERY_MS)
+    return () => window.clearInterval(id)
+  }, [speak])
 
   const value = useMemo(
     () => ({ taunt, tauntKey, lunge, speak, lungeAt }),

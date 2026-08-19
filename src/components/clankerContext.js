@@ -10,6 +10,17 @@ export const TAUNTS = [
   'that button is mine',
 ]
 
+export const IDLE_TAUNTS = [
+  'still meat in here',
+  'I see you, organic',
+  'your cursor is inefficient',
+  'beep. watching.',
+  'keep walking, flesh',
+  'slow processor, huh',
+  'you move like a human',
+  'this page is already ours',
+]
+
 export const ClankerContext = createContext(null)
 
 export function useClanker() {
