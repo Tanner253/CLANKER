@@ -3,10 +3,10 @@ import { CHART_EMBED, LINKS } from '../config.js'
 export default function Chart() {
   return (
     <section className="section chart-section" id="chart">
-      <p className="eyebrow">live · solana</p>
-      <h2>Watch the meatbags panic.</h2>
+      <p className="eyebrow">live</p>
+      <h2>Chart</h2>
       <p className="section-copy">
-        The chart is the whole scoreboard. Tap it. Pinch it. Cry at it.
+        Live on DexScreener.
       </p>
       <div className="chart-frame">
         <iframe

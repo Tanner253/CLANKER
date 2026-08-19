@@ -7,6 +7,7 @@ import Lore from './components/Lore.jsx'
 import MemeDepot from './components/MemeDepot.jsx'
 import Nav from './components/Nav.jsx'
 import Starfield from './components/Starfield.jsx'
+import TikTokFeed from './components/TikTokFeed.jsx'
 import { LINKS, TICKER } from './config.js'
 
 function App() {
@@ -19,11 +20,12 @@ function App() {
         <main>
           <Hero />
           <Chart />
+          <TikTokFeed />
           <MemeDepot />
           <Lore />
         </main>
         <footer className="footer">
-          <p>{TICKER} · please use responsibly</p>
+          <p>{TICKER}</p>
           <a href={LINKS.x} target="_blank" rel="noreferrer">
             X community
           </a>

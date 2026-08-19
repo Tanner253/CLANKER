@@ -66,11 +66,10 @@ function StillCard({ item }) {
 export default function MemeDepot() {
   return (
     <section className="section" id="memes">
-      <p className="eyebrow">ammo</p>
+      <p className="eyebrow">memes</p>
       <h2>The Meme Depot</h2>
       <p className="section-copy">
-        Token pic, C-Word Pass, banner. Copy or download and go raid. No scavenger
-        hunt through old Telegram threads.
+        Token pic, C-Word Pass, banner. Copy or download.
       </p>
       <div className="still-grid">
         {MEMES.map((item) => (

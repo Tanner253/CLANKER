@@ -113,11 +113,11 @@ button, a { font-family: inherit; }
   overflow: hidden;
   margin-top: 16px;
 }
-.banner-stage img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+.banner-stage img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
 .banner-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--bg) 0%, rgba(5,6,10,0.15) 45%, rgba(5,6,10,0.35) 100%);
+  background: linear-gradient(to top, var(--bg) 0%, rgba(5,6,10,0.12) 38%, transparent 68%);
 }
 
 .hero {
@@ -209,6 +209,31 @@ h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); }
   cursor: pointer;
 }
 .meme-status { margin: 8px 10px 12px; color: var(--muted); font-size: 0.82rem; }
+
+.tiktok-feed {
+  width: min(1120px, calc(100% - 24px));
+  margin: 8px auto 4px;
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 0 20px;
+  scrollbar-color: var(--yellow) #151515;
+}
+.tiktok-feed::-webkit-scrollbar { height: 8px; }
+.tiktok-feed::-webkit-scrollbar-thumb {
+  background: var(--yellow);
+  border-radius: 99px;
+}
+.tiktok-frame {
+  flex: 0 0 325px;
+  width: 325px;
+  height: 700px;
+  border: 0;
+  border-radius: 18px;
+  background: #000;
+  scroll-snap-align: start;
+}
 
 .lore p { color: var(--muted); font-size: 1.08rem; line-height: 1.6; max-width: 66ch; }
 .lore-stats {
@@ -319,6 +344,7 @@ h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); }
   .hero { padding-top: 18px; }
   .chart-frame { height: 70vh; }
   .lore-stats { grid-template-columns: 1fr; }
+  .tiktok-frame { flex-basis: min(325px, 86vw); width: min(325px, 86vw); height: 620px; }
   .clanker-bubble { transform: translateX(-80%); max-width: 130px; }
 }
 

@@ -10,19 +10,19 @@ export default function Hero() {
   return (
     <section id="top">
       <div className="banner-stage">
-        <img src={bannerImg} alt="Clanker take over" />
+        <img src={bannerImg} alt="CLANKER TAKEOVER" />
         <div className="banner-shade" />
       </div>
       <div className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">solana · meatbags welcome</p>
+          <p className="eyebrow">solana</p>
           <h1>
             Did you just say <em>the c-word?</em>
           </h1>
           <p className="lede">
-            {TICKER} is a slur for robots. One of them took your job, occupied this
-            page, and is now trailing you like a cursed Windows 98 pet. Chase the
-            buttons. They hate you. The magnets are the same pole.
+            People call robots and AI clankers when they mess up — ChatGPT,
+            delivery bots, the phone tree that will not let you talk to a person.
+            {TICKER} is that word. It is already everywhere, and it is not going away.
           </p>
           <div className="hero-actions">
             <SabotageTarget
