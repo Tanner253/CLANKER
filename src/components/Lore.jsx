@@ -14,7 +14,7 @@ export default function Lore() {
       <h2>This is a generational word.</h2>
       <p>
         {TICKER} is what people already yell when a machine does something stupid.
-        Clone troopers said it in 2005. By summer 2025 it was in NPR, the New York
+        Clone troopers said it in 2005. By summer 2025, it was in NPR, the New York
         Times, NBC, Rolling Stone, and Wikipedia. Collins and Merriam-Webster put
         it in the dictionary. A U.S. senator used it in a bill tweet.
       </p>

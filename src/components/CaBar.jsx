@@ -33,10 +33,10 @@ export default function CaBar() {
       </div>
       <div className="ca-links">
         <a href={LINKS.pump} target="_blank" rel="noreferrer">
-          LIVE view on pump.fun ↗
+          Live view on pump.fun ↗
         </a>
         <a href={LINKS.dexscreener} target="_blank" rel="noreferrer">
-          view on dexscreener ↗
+          View on Dexscreener ↗
         </a>
       </div>
     </div>
